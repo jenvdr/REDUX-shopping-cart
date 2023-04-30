@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Cart = (props) => {
   const items = useSelector(state => state.cart.items);
+  const totalAmount = useSelector(state => state.cart.totalAmount);
 
   const itemsAvailable = items.length !== 0;
 
@@ -19,6 +20,7 @@ const Cart = (props) => {
         />
         ))}
         {!itemsAvailable && <p>Your cart is empty.</p>}
+        <p>{`Total: $${totalAmount}`}</p>
       </ul>
     </Card>
   );

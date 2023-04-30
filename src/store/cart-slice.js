@@ -21,9 +21,11 @@ const cartSlice = createSlice({
           totalPrice: newItem.price,
           name: newItem.title,
         }); // Only possible because redux toolkit ensures .push() won't manipulate the existing state.
+        state.totalAmount += newItem.price;
       } else {
         existingItem.quantity++;
         existingItem.totalPrice = existingItem.totalPrice + newItem.price;
+        state.totalAmount += existingItem.price;
       }
     },
 
@@ -31,6 +33,7 @@ const cartSlice = createSlice({
         const id = action.payload;
         const existingItem = state.items.find((item) => item.id === id);
         state.totalQuantity--;
+        state.totalAmount -= existingItem.price;
         if (existingItem.quantity === 1) {
             state.items = state.items.filter(item => item.id !== id);
         } else {
