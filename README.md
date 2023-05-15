@@ -23,4 +23,4 @@
 
 ### Important
 
-- Custom Firebase database used expires after 1 month, will have to be replicated;
+- Custom Firebase database used expires after 1 month, will have to be replicated
